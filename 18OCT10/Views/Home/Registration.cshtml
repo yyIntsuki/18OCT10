@@ -1,0 +1,33 @@
+﻿@model _18OCT10.Models.UserRegistration
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+<div class="registration">
+    <h2>Registration</h2>
+    <p>Please register before renting a car.</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary();
+
+        <p>Name @Html.TextBox("Name")</p>
+        <p>Phone Number @Html.TextBox("phoneNum")</p>
+        <p>E-Mail @Html.TextBox("eMail")</p>
+        <p>Address @Html.TextBox("address")</p>
+        <hr />
+        <p>We also need your driving license information.</p>
+        <p>Forename @Html.TextBox("drvLic1")</p>
+        <p>Lastname @Html.TextBox("drvLic2")</p>
+        <p>Date of birth @Html.TextBox("drvLic3")</p>
+        <p>Acq. date @Html.TextBox("drvLic4a")</p>
+        <p>Exp. date @Html.TextBox("drvLic4b")</p>
+        <p>Place of acq. @Html.TextBox("drvLic4c")</p>
+        <p>Unique ID @Html.TextBox("drvLic4d")</p>
+        <p>Personal ID @Html.TextBox("drvLic5")</p>
+        <p>License type @Html.TextBox("drvLic9")</p>
+
+        <input type="submit" value="Register" />
+    }
+</div>
