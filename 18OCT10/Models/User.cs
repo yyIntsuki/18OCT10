@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace _18OCT10.Models
 {
-    public class UserRegistration
+    public class User
     {
         [Required(ErrorMessage = "Please enter your name.")]
         public string name { get; set; }

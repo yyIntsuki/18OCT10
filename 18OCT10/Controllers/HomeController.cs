@@ -14,9 +14,9 @@ namespace _18OCT10.Controllers
             return View();
         }
 
-        public ActionResult Rent()
+        public ActionResult Browse()
         {
-            return View();
+            return View(cars);
         }
 
         [HttpGet]
@@ -26,7 +26,7 @@ namespace _18OCT10.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(UserRegistration ur)
+        public ActionResult Registration(User ur)
         {
             if (ModelState.IsValid)
             {
@@ -45,7 +45,7 @@ namespace _18OCT10.Controllers
         }
 
         [HttpPost]
-        public ActionResult Result(UserRegistration r)
+        public ActionResult Result(User r)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +55,40 @@ namespace _18OCT10.Controllers
             {
                 return View();
             }
+        }
+
+        // Fake data, acts as database data.
+        private List<Car> cars;
+        private List<User> customers;
+
+        // Constructor, code that automatically initiate on new
+        public HomeController()
+        {
+            cars = new List<Car>();
+            cars.Add(new Car() { Make = "Nissan", Model = "Leaf", RegistrationNum = "LEAF01"});
+            cars.Add(new Car() { Make = "Jaguar", Model = "I-Pace", RegistrationNum = "JAGU01" });
+            cars.Add(new Car() { Make = "Tesla", Model = "S", RegistrationNum = "TESL01"});
+            cars.Add(new Car() { Make = "Tesla", Model = "X", RegistrationNum = "TESL02" });
+            cars.Add(new Car() { Make = "Tesla", Model = "3", RegistrationNum = "TESL03" });
+            cars.Add(new Car() { Make = "Tesla", Model = "Roadster", RegistrationNum = "TESL04" });
+
+            customers = new List<User>();
+            customers.Add(new User() { name = "Intsuki" });
+        }
+
+        public PartialViewResult Cars()
+        {
+            return PartialView("_Cars", cars);
+        }
+
+        public ViewResult Details(string RegistrationNum)
+        {
+            return View("carDetails", cars.First(x => x.RegistrationNum == RegistrationNum));
+        }
+
+        public PartialViewResult Users()
+        {
+            return PartialView("_Customers", customers);
         }
     }
 }

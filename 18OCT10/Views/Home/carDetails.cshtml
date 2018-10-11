@@ -1,0 +1,20 @@
+﻿@model _18OCT10.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h2>Details</h2>
+    <hr />
+    <h4>Make: </h4>
+        @Model.Make
+    <h4>Model: </h4>
+        @Model.Model
+    <br />
+    <h4>Registration Number:</h4>
+        @Model.RegistrationNum
+</div>
+<br />
+<h4>@Html.ActionLink("Book", "Registration")</h4>
+<h4>@Html.ActionLink("Back", "Browse")</h4>
